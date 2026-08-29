@@ -33,10 +33,6 @@ alias gri="git rebase -i"
 # shorthand for opening neovim
 alias nv="nvim"
 
-# shorthand for copying and pasting
-alias pbc="pbcopy"
-alias pbp="pbpaste"
-
 # alias for aws sso cli login
 alias aws-login="aws sso login --profile cohen"
 

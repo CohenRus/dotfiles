@@ -18,13 +18,6 @@ cx() {
 	ls -a
 }
 
-# aerospace window switcher using fzf
-ff() {
-  aerospace list-windows --all |
-    fzf --bind 'enter:execute-silent(echo {} | awk "{print \$1}" | xargs aerospace focus --window-id)+abort'
-}
-
-
 # setup yazi to open with "y"
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -34,13 +27,3 @@ function y() {
 }
  rm -f -- "$tmp"
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/cohenrussell/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-
-# terminal-wakatime setup
-export PATH="$HOME/.wakatime:$PATH"
-eval "$(terminal-wakatime init)"
