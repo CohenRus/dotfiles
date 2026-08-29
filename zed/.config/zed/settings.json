@@ -1,0 +1,134 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "provider": "ollama",
+    "ollama": {
+      "prompt_format": "qwen",
+      "api_url": "http://localhost:11434"
+    }
+  },
+  "search": {
+    "include_ignored": true,
+  },
+  "git": {
+    "blame": {
+      "show_avatar": false,
+    },
+    "inline_blame": {
+      "enabled": true,
+    },
+  },
+  "agent": {
+    "sidebar_side": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "cursor_blink": false,
+  "cli_default_open_behavior": "new_window",
+  "redact_private_values": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "favorite_config_option_values": {
+        "fast-mode": [
+          "off"
+        ]
+      },
+      "default_config_options": {
+        "collaboration_mode": "default",
+        "fast-mode": false,
+        "reasoning_effort": "high",
+        "model": "gpt-5.6-sol",
+        "mode": "agent-full-access"
+      },
+      "type": "registry"
+    },
+    "deepagents": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+    "cursor": {
+      "type": "registry",
+    },
+  },
+  "file_scan_exclusions": [
+    "**/out",
+    "**/dist",
+    "**/.next",
+    "**/report",
+    "**/node_modules",
+  ],
+  "base_keymap": "VSCode",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 16,
+  "buffer_font_size": 16.0,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Macchiato",
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato",
+  },
+  "gutter": {
+    "runnables": false,
+    "breakpoints": false
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "agent_review": false,
+    "code_actions": false,
+    "selections_menu": false,
+  },
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_branch_name": true,
+    "show_project_items": true,
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_menus": true,
+  },
+  "status_bar": {
+    "active_language_button": false,
+    "cursor_position_button": false,
+    "line_endings_button": false,
+    "active_encoding_button": "disabled",
+  },
+  "project_panel": {
+    "button": false,
+  },
+  "global_lsp_settings": {
+    "button": false,
+  },
+  "collaboration_panel": { "button": false },
+  "git_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "debugger": { "button": false },
+  "auto_install_extensions": {
+    "hackatime": true
+  },
+}

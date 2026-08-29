@@ -1,0 +1,53 @@
+[mgr]
+ratio = [1, 4, 3]
+sort_sensitive = false
+sort_dir_first = true
+show_symlink = true
+mouse_events = ["scroll"]
+linemode = "size_and_mtime"
+sort_by = "natural"
+
+[preview]
+wrap = "yes"
+tab_size = 4
+max_width = 1080
+max_height = 1620
+
+[plugin]
+prepend_previewers = [
+  { url = "*.docx", run = "office" },
+  { url = "*.pptx", run = "office" },
+  { url = "*.xlsx", run = "office" },
+  { url = "*.zip",  run = "lsar" },
+  { url = "*.tar",  run = "lsar" },
+  { url = "*.7z",   run = "lsar" },
+  { url = "*.rar",  run = "lsar" },
+  { url = "*.tar.gz", run = "lsar" },
+]
+[input]
+cursor_blink = false
+
+[opener]
+vscode = [
+	{ run = "code $@", orphan = true } 
+]
+
+[open]
+rules = [
+	# Text
+	{ mime = "text/*", use = [ "edit", "vscode", "reveal" ] },
+	# Image
+	{ mime = "image/*", use = [ "open", "vscode", "reveal" ] },
+	# Media
+	{ mime = "{audio,video}/*", use = [ "play", "vscode", "reveal" ] },
+	# Archive
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "vscode", "reveal" ] },
+	# JSON
+	{ mime = "application/{json,ndjson}", use = [ "edit", "vscode", "reveal" ] },
+
+	{ mime = "*/javascript", use = [ "edit", "vscode", "reveal" ] },
+	# Empty file
+	{ mime = "inode/empty", use = [ "edit", "vscode", "reveal" ] },
+	# Fallback
+	{ mime = "*", use = [ "open", "vscode", "reveal" ] },
+]

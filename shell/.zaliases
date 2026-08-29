@@ -1,0 +1,42 @@
+# shell aliases
+
+# open tmux stuff session
+alias t="tmux new -A -s stuff"
+
+# deepseek
+alias ds="reasonix"
+
+# fuzzy find with preview using bat
+alias fzf-p="fzf --preview='bat --color=always {}'"
+
+# cursor agent
+alias cursor-agent="agent"
+
+# I'm lazy
+alias ll="ls -la"
+
+# git aliases
+alias gs="git status"
+alias gpl="git pull"
+alias gph="git push"
+alias gphf="git push --force-with-lease"
+alias gd="git diff"
+alias gl="git log"
+alias gf="git fetch"
+alias gfo="git fetch origin"
+alias ga="git add"
+alias gc="git commit"
+alias gca="git add . && git commit"
+alias gr="git rebase"
+alias gri="git rebase -i"
+
+# shorthand for opening neovim
+alias nv="nvim"
+
+# shorthand for copying and pasting
+alias pbc="pbcopy"
+alias pbp="pbpaste"
+
+# alias for aws sso cli login
+alias aws-login="aws sso login --profile cohen"
+

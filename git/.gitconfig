@@ -1,0 +1,27 @@
+[user]
+	name = Cohen Russell
+	email = cohen_russell@icloud.com
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[core]
+	autocrlf = input
+	pager = delta
+	editor = nvim
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+
+[merge]
+	conflict-style = zdiff3
+[push]
+	autoSetupRemote = true

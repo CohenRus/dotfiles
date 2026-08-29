@@ -1,0 +1,39 @@
+theme = catppuccin-macchiato
+font-size = 17
+font-family = Hack Nerd
+background-blur-radius = 20
+background-opacity = 0.825
+
+window-decoration = true
+window-padding-x = 4
+window-padding-y = 4
+
+term = xterm-256color
+
+mouse-hide-while-typing = true
+cursor-style = block
+cursor-style-blink = false
+
+# this needs to be set to make the cursor work in insert mode
+shell-integration-features = no-cursor
+
+# global keybind to open the popup/dropdown terminal
+keybind = global:command+shift+o=toggle_quick_terminal
+keybind = global:command+shift+g=new_window
+
+# general window controls
+keybind = cmd+s>r=reload_config
+keybind = cmd+s>x=close_surface
+
+# controlling splits or panes
+keybind = cmd+s>/=new_split:right
+keybind = cmd+s>-=new_split:down
+keybind = cmd+s>k=goto_split:top
+keybind = cmd+s>j=goto_split:bottom
+keybind = cmd+s>h=goto_split:left
+keybind = cmd+s>l=goto_split:right
+keybind = cmd+s>z=toggle_split_zoom
+keybind = cmd+s>e=equalize_splits
+
+# controll tabs
+keybind = cmd+t=new_tab

@@ -1,0 +1,49 @@
+format = """
+$username$hostname\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260)\
+\n$character"""
+
+[username]
+show_always = true
+style_user = "bg:#a3aed2 fg:#F5F5F5"
+style_root = "bg:#a3aed2 fg:#FF0000"
+format = "[ $user]($style)"
+
+[hostname]
+ssh_only = true
+style = "bg:#a3aed2 fg:#F5F5F5"
+format = "[@$hostname]($style)"
+
+[directory]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path]($style)"
+truncation_length = 2
+home_symbol = "~"
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"~/CAD" = "󰻬 "
+"~/Code" = "󰈮 "
+"~/Desktop" = "󰇄 "
+"~/Documents" = "󰈙"
+"~/Downloads" = " "
+"~/OneDrive - issaquah.wednet.edu" = "󰏊 "
+"~/.config" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:#769ff0 bg:#394260"
+format = '[ $symbol $branch]($style)'
+
+[git_status]
+style = "fg:#769ff0 bg:#394260"
+format = '[( $all_status$ahead_behind)]($style)'
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"

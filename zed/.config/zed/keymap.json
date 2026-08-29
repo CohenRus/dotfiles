@@ -1,0 +1,107 @@
+// keymap.json, generated at Wed May 27 2026 12:34:47 GMT+0800 (Singapore Standard Time)
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      // Git
+      "space g h": "editor::ToggleSelectedDiffHunks",
+      "space g s": "git_panel::ToggleFocus",
+      // Toggle inlay hints
+      "space t i": "editor::ToggleInlayHints",
+      // Toggle soft wrap
+      "space t w": "editor::ToggleSoftWrap",
+      // Open markdown preview
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+      // Search word under cursor
+      "space s w": "pane::DeploySearch",
+      // Search on current buffer
+      "space s b": "buffer_search::Deploy",
+      // Leader: delete (black hole), yank (system clipboard)
+      "space y": "editor::Copy",
+      // emulate harpoon
+      "space 1": ["pane::ActivateItem", 0],
+      "space 2": ["pane::ActivateItem", 1],
+      "space 3": ["pane::ActivateItem", 2],
+      "space 4": ["pane::ActivateItem", 3],
+      "space 5": ["pane::ActivateItem", 4],
+      "space 6": ["pane::ActivateItem", 5],
+      "space 7": ["pane::ActivateItem", 6],
+      "space 8": ["pane::ActivateItem", 7],
+      // Code actions & rename
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // Window movement bindings
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // +LSP
+      "space e": "editor::Hover",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      // Switch between buffers
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "cmd-shift-h": "pane::SwapItemLeft",
+      "cmd-shift-l": "pane::SwapItemRight",
+      // Join lines, keep cursor position
+      "shift-j": "vim::JoinLines",
+      // File finder & filetree
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch",
+      "space v f": "project_panel::ToggleFocus",
+      // Close active panel
+      "shift-q": "pane::CloseActiveItem",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      // AI chat & terminal
+      "space a": "agent::ToggleFocus",
+      "space r": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    // Comment code
+    "bindings": {
+      "g c": "editor::ToggleComments",
+      // Move selected lines up/down
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      // Paste without overwriting register
+      "space p": "editor::Paste",
+    },
+  },
+  // Better escape
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": "vim::NormalBefore", // remap jj in insert mode to escape
+      "j k": "vim::NormalBefore", // remap jk in insert mode to escape
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "cmd-b": "workspace::ToggleRightDock",
+      "cmd-shift-b": "workspace::ToggleLeftDock",
+      "cmd-j": "workspace::ToggleBottomDock",
+    },
+  },
+]
