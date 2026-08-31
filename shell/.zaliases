@@ -1,4 +1,5 @@
 # shell aliases
+alias hypredit="vim ~/Dotfiles/hyprland/.config/hypr/"
 
 # open tmux stuff session
 alias t="tmux new -A -s stuff"
