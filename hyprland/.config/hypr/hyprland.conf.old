@@ -1,0 +1,5 @@
+
+# window managment
+bind = $mainMod, Q, killactive,
+bind = $mainMod, F, fullscreen, 
+
