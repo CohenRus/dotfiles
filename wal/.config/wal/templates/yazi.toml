@@ -1,0 +1,19 @@
+[manager]
+cwd = { fg = "{color4}" }
+hovered = { fg = "{background}", bg = "{color4}" }
+find_keyword = { fg = "{color3}", italic = true }
+find_position = { fg = "{color5}", bg = "reset", italic = true }
+marker_copied = { fg = "{color2}", bg = "{color2}" }
+marker_cut = { fg = "{color1}", bg = "{color1}" }
+marker_selected = { fg = "{color6}", bg = "{color6}" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "{color8}", bg = "{color8}" }
+mode_normal = { fg = "{background}", bg = "{color4}", bold = true }
+mode_select = { fg = "{background}", bg = "{color2}", bold = true }
+mode_unset  = { fg = "{background}", bg = "{color1}", bold = true }
+progress_label  = { fg = "{color7}", bold = true }
+progress_normal = { fg = "{foreground}", bg = "{background}" }
+progress_error  = { fg = "{color1}", bg = "{background}" }

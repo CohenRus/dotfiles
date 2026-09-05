@@ -72,7 +72,7 @@
   },
 
   "clock": {
-    "format": "{:%H:%M}",
+    "format": "{:%m/%d %H:%M}",
     "format-alt": "{:%A, %B %d}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -100,7 +100,7 @@
 
   "custom/spotify": {
     "exec": "/usr/bin/python3 /home/cohen/Work/scripts/waybar-spotify.py --player spotify",
-    "format": "{}  ",
+    "format": "{}",
     "return-type": "json",
     "on-click": "playerctl play-pause",
     "on-scroll-up": "playerctl next",

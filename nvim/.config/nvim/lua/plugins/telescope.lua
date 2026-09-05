@@ -1,5 +1,3 @@
-local builtin = require('telescope.builtin')
-
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -9,10 +7,10 @@ return {
         opts = {defaults = {
             mappings = {
                 i = {
-                    ["<C-d>"] = require("telescope.actions").delete_buffer,
+                    ["<C-d>"] = "delete_buffer",
                 },
                 n = {
-                    ["<C-d>"] = require("telescope.actions").delete_buffer,
+                    ["<C-d>"] = "delete_buffer",
                 }
             },
             pickers = {
@@ -23,8 +21,8 @@ return {
         }},
         keys = {
             { "<leader>f", ":Telescope find_files<CR>", desc = "Find Files" },
-            { "<leader>gf", builtin.git_files, desc = "Git Files" },
-            { "<leader>g", builtin.live_grep, desc = "Grep String" },
+            { "<leader>gf", function() require("telescope.builtin").git_files() end, desc = "Git Files" },
+            { "<leader>g", function() require("telescope.builtin").live_grep() end, desc = "Grep String" },
             { "<leader>b", ":Telescope buffers<CR>"}
         }
     },

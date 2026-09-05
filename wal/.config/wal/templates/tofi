@@ -1,0 +1,43 @@
+# ~/.config/wal/templates/tofi
+
+# --- Window ---
+anchor = center
+width = 640
+height = 380
+corner-radius = 16
+
+# --- Padding ---
+padding-top = 18
+padding-bottom = 18
+padding-left = 12
+padding-right = 22
+result-spacing = 9
+
+# --- Border ---
+border-width = 1
+outline-width = 0
+border-color = #ffffff2e
+
+# --- Typography ---
+font = JetBrainsMono Nerd Font
+font-size = 16
+
+# --- Colors ---
+background-color = {background}e8
+text-color = {foreground}
+
+# --- Prompt / Input ---
+prompt-text = ""
+prompt-color = {color4}
+prompt-padding = 14
+placeholder-text = "Search…"
+placeholder-color = {foreground}66
+input-color = {foreground}
+text-cursor-style = bar
+text-cursor-color = {color4}
+
+# --- Results (subtle rounded highlight, no solid block) ---
+selection-color = #ffffff
+selection-background = #ffffff26
+selection-background-padding = 4,3
+selection-background-corner-radius = 8

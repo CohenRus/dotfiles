@@ -1,4 +1,4 @@
-theme = purple
+theme = /home/cohen/.cache/wal/colors-ghostty
 font-size = 13
 font-family = Hack Nerd
 background-blur-radius = 20

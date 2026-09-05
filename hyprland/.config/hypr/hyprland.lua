@@ -9,6 +9,13 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+-- Load the colors from the symlinked file
+local colors = require("wal_colors")
+
+-- Build a Hyprland `rgba(RRGGBBAA)` color from a pywal `#RRGGBB` value plus an alpha hex pair
+local function rgba(hex, alpha)
+    return "rgba(" .. hex:sub(2) .. alpha .. ")"
+end
 
 ------------------
 ---- MONITORS ----
@@ -73,8 +80,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("localsend_app --hidden")
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-	hl.exec_cmd("elephant")
-	hl.exec_cmd("walker --gapplication-service")
+	hl.exec_cmd("wl-paste --type text --watch cliphlist store")
+	hl.exec_cmd("wl-paste --type image --watch cliphlist store")
 end)
 
 -------------------------------
@@ -89,6 +96,15 @@ hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("AQ_DRM_DEVICES", "/dev/dri/card0")
+
+hl.config({
+    env = {
+        "QT_QPA_PLATFORMTHEME,qt5ct",
+        "QT_QPA_PLATFORM,wayland;xcb",
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1",
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+    },
+})
 
 -----------------------
 ----- PERMISSIONS -----
@@ -125,8 +141,8 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border   = { colors = {"rgba(c3b1e1ee)", "rgba(a388ccee)"}, angle = 45 },
-            inactive_border = "rgba(4e415caa)",
+            active_border   = { colors = { rgba(colors.color14, "ee"), rgba(colors.color12, "ee") }, angle = 45 },
+            inactive_border = rgba(colors.color1, "aa"),
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -150,7 +166,7 @@ hl.config({
             enabled      = true,
             range        = 4,
             render_power = 3,
-            color        = 0xee1a1a1a,
+            color        = rgba(colors.background, "ee"),
         },
 
         blur = {
@@ -288,7 +304,7 @@ hl.device({
 
 hl.device({
     name        = "razer-razer-deathadder-v2-pro-1",
-    sensitivity = -0.9,
+    sensitivity = -0.8,
     scroll_factor = 1,
     accel_profile = flat,
 })
@@ -301,15 +317,22 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("wlogout"))
+
+-- Screenshot a selected region
+hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/screenshots"))
+
+-- launcher
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("tofi-drun --drun-launch=true"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist list | tofi --prompt-text='clipboard: ' | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.config/tofi/file-search.sh"))
+
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("nc -U /run/user/1000/walker/walker.sock"))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 -- Move focus with mainMod + arrow keys
@@ -325,10 +348,6 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

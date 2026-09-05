@@ -1,14 +1,15 @@
 /* Minimal, clean — pastel purple */
+@import url("../../.cache/wal/colors-waybar.css");
 
-@define-color bg       #211e33;
-@define-color surface  #2c2845;
-@define-color text     #f1edfb;
-@define-color muted    #b9b1e2;
-@define-color subtle   #938cbf;
-@define-color accent   #d6bbff;
-@define-color accent2  #a9e4ea;
-@define-color red      #f58ca8;
-@define-color yellow   #fad68f;
+@define-color bg       @background;
+@define-color surface  @color1;
+@define-color text     @foreground;
+@define-color muted    @color7;
+@define-color subtle   @color8;
+@define-color accent   @color14;
+@define-color accent2  @color12;
+@define-color red      @color11;
+@define-color yellow   @color3;
 
 * {
     all: unset;
@@ -18,15 +19,15 @@
 }
 
 window#waybar {
-    background-color: rgba(33, 30, 51, 0.90);
-    border: 1px solid rgba(214, 187, 255, 0.30);
+    background-color: alpha(@bg, 0.90);
+    border: 1px solid alpha(@accent, 0.30);
     border-radius: 0 0 14px 14px;
-    margin: 2px 0 10px 0;
+    margin: 2px 5px 10px 5px;
 }
 
 tooltip {
     background-color: @surface;
-    border: 1px solid rgba(214, 187, 255, 0.35);
+    border: 1px solid alpha(@accent, 0.35);
     border-radius: 8px;
     padding: 6px 10px;
 }

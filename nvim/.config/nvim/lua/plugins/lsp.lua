@@ -11,9 +11,17 @@ return {
         opts = {
             ensure_installed = { "lua_ls", "clangd", "pyright", "ts_ls", "cssls", "css_variables", "html", "bashls", "jdtls" },
         },
+        config = function(_, opts)
+            -- Attach blink.cmp capabilities to every server before it is enabled.
+            vim.lsp.config("*", {
+                capabilities = require("blink.cmp").get_lsp_capabilities(),
+            })
+            require("mason-lspconfig").setup(opts)
+        end,
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
             "neovim/nvim-lspconfig",
+            "saghen/blink.cmp",
         },
     },
     {

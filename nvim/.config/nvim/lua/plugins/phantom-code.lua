@@ -15,8 +15,6 @@ return {
 
     notify = 'warn',
 
-    -- curl_extra_args = { '-u', 'cohen:nyfxeM-8cenfa-zogwir' },
-
     -- LSP diagnostics near anchor (cursor for inline, selection start for Expand); injected into chat/FIM templates.
     diagnostics = {
       enable = true,

@@ -1,17 +1,5 @@
 return {
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        lazy = false,
-        priority = 1000,
-        config = function() 
-            require("catppuccin").setup({
-                flavor = "macchiato",
-            })
-            vim.cmd.colorscheme "catppuccin"
-        end
-    },
-    {
         "nvim-lualine/lualine.nvim",
         lazy = false,
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -19,7 +7,7 @@ return {
             require('lualine').setup {
                 options = {
                     icons_enabled = true,
-                    theme = 'auto',
+                    theme = 'neopywal',
                     component_separators = { left = '', right = ''},
                     section_separators = { left = '', right = ''},
                     disabled_filetypes = {

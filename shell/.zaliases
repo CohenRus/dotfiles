@@ -1,5 +1,5 @@
 # shell aliases
-alias hypredit="vim ~/Dotfiles/hyprland/.config/hypr/"
+alias hypredit="nvim ~/Dotfiles/hyprland/.config/hypr/"
 
 alias tr="trash-put"
 
@@ -8,6 +8,7 @@ alias t="tmux new -A -s stuff"
 
 alias gpu-power="cat /sys/bus/pci/devices/0000:01:00.0/power_state"
 alias pbc="wl-copy"
+alias theme="wal -i /home/cohen/Pictures/wallpapers/current"
 
 # deepseek
 alias ds="reasonix"
