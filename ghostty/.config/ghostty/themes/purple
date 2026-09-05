@@ -1,0 +1,40 @@
+# Pastel Purple Theme
+background = #282436
+foreground = #E2DCED
+selection-background = #564868
+selection-foreground = #F5F5F5
+cursor-color = #C3B1E1
+cursor-text = #282436
+
+# The 16-color ANSI Palette (Pastel variants)
+# Black / Bright Black (Dark Muted Purples)
+palette = 0=#342E43
+palette = 8=#564868
+
+# Red / Bright Red (Pastel Pinks)
+palette = 1=#E5989B
+palette = 9=#FFB4A2
+
+# Green / Bright Green (Pastel Mints)
+palette = 2=#B5E48C
+palette = 10=#D9ED92
+
+# Yellow / Bright Yellow (Pastel Creams)
+palette = 3=#F4F1DE
+palette = 11=#FDFCDC
+
+# Blue / Bright Blue (Pastel Periwinkle)
+palette = 4=#BDE0FE
+palette = 12=#A2D2FF
+
+# Magenta / Bright Magenta (The Core Pastel Purples)
+palette = 5=#A388CC
+palette = 13=#C3B1E1
+
+# Cyan / Bright Cyan (Pastel Aquas)
+palette = 6=#9BF6FF
+palette = 14=#CAFFBF
+
+# White / Bright White
+palette = 7=#E2DCED
+palette = 15=#F5F5F5

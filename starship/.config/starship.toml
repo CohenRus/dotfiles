@@ -1,26 +1,26 @@
 format = """
 $username$hostname\
-[](bg:#769ff0 fg:#a3aed2)\
+[](bg:#A388CC fg:#C3B1E1)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:#A388CC bg:#4E415C)\
 $git_branch\
 $git_status\
-[](fg:#394260)\
+[](fg:#4E415C)\
 \n$character"""
 
 [username]
 show_always = true
-style_user = "bg:#a3aed2 fg:#F5F5F5"
-style_root = "bg:#a3aed2 fg:#FF0000"
+style_user = "bg:#C3B1E1 fg:#F5F5F5"
+style_root = "bg:#C3B1E1 fg:#FF0000"
 format = "[ $user]($style)"
 
 [hostname]
 ssh_only = true
-style = "bg:#a3aed2 fg:#F5F5F5"
+style = "bg:#C3B1E1 fg:#F5F5F5"
 format = "[@$hostname]($style)"
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#e3e5e5 bg:#A388CC"
 format = "[ $path]($style)"
 truncation_length = 2
 home_symbol = "~"
@@ -37,11 +37,11 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "fg:#769ff0 bg:#394260"
+style = "fg:#A388CC bg:#4E415C"
 format = '[ $symbol $branch]($style)'
 
 [git_status]
-style = "fg:#769ff0 bg:#394260"
+style = "fg:#A388CC bg:#4E415C"
 format = '[( $all_status$ahead_behind)]($style)'
 
 [character]

@@ -1,0 +1,108 @@
+/* --- PREMIUM PASTEL PURPLE THEME --- */
+@define-color window-bg   rgba(20, 15, 25, 0.65);   /* Deep, dark translucent backdrop */
+@define-color btn-base    rgba(50, 38, 65, 0.5);    /* Muted, glassy purple */
+@define-color btn-hover   rgba(142, 115, 182, 0.9); /* Bright pastel purple pop */
+@define-color btn-border  rgba(142, 115, 182, 0.15);/* Barely-there border */
+@define-color text-color  #F0EBF5;                  /* Crisp pastel white */
+
+* {
+    background-image: none;
+    font-family: sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+window {
+    background-color: @window-bg;
+}
+
+button {
+    color: @text-color;
+    background-color: @btn-base;
+    border: 2px solid @btn-border;
+    outline-style: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22%;
+    border-radius: 20px;
+    box-shadow: none;
+    text-shadow: none;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+button:focus {
+    background-color: @btn-hover;
+    background-size: 30%;
+}
+
+button:hover {
+    background-color: @btn-hover;
+    background-size: 35%; 
+    border: 2px solid rgba(142, 115, 182, 0.6);
+    box-shadow: 0px 0px 25px 0px rgba(142, 115, 182, 0.3); /* Pastel glow */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- HOVER STATES --- */
+/* Changed left/right margins from 0px to 15px to maintain horizontal spacing when hovered */
+button:hover#lock {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px; 
+}
+
+button:hover#logout {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px;
+}
+
+button:hover#suspend {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px;
+}
+
+button:hover#shutdown {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px;
+}
+
+button:hover#hibernate {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px;
+}
+
+button:hover#reboot {
+    border-radius: 40px;
+    margin : 10px 15px 10px 15px;
+}
+
+/* --- BASE STATES AND ICONS --- */
+/* Changed left/right margins from 0px to 15px to space them out */
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+    margin : 20px 15px 20px 15px;
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+    margin : 20px 15px 20px 15px;
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+    margin : 20px 15px 20px 15px;
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+    margin : 20px 15px 20px 15px;
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+    margin : 20px 15px 20px 15px;
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+    margin : 20px 15px 20px 15px;
+}

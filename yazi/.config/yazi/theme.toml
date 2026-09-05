@@ -1,0 +1,54 @@
+[manager]
+cwd = { fg = "#C3B1E1", italic = true }
+# Hovered file/folder
+hovered         = { fg = "#F5F5F5", bg = "#4E415C", bold = true }
+preview_hovered = { underline = true }
+# Find and search highlights
+find_keyword  = { fg = "#A388CC", italic = true }
+find_position = { fg = "#C3B1E1", bg = "reset", italic = true }
+# Borders
+border_symbol = "│"
+border_style  = { fg = "#4E415C" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#4E415C", bg = "#4E415C" }
+
+# Normal mode (Medium Pastel Purple)
+mode_normal = { fg = "#1A1721", bg = "#A388CC", bold = true }
+# Select mode (Light Pastel Purple)
+mode_select = { fg = "#1A1721", bg = "#C3B1E1", bold = true }
+# Unset/other modes
+mode_unset  = { fg = "#1A1721", bg = "#4E415C", bold = true }
+
+# Progress bar
+progress_label  = { fg = "#F5F5F5", bold = true }
+progress_normal = { fg = "#A388CC", bg = "#282433" }
+progress_error  = { fg = "#E5989B", bg = "#282433" }
+
+[tab]
+# Active tab
+active = { fg = "#1A1721", bg = "#A388CC" }
+# Inactive tabs
+inactive = { fg = "#C3B1E1", bg = "#4E415C" }
+
+[input]
+border   = { fg = "#A388CC" }
+title    = { fg = "#C3B1E1" }
+value    = { fg = "#F5F5F5" }
+selected = { bg = "#4E415C" }
+
+[select]
+border   = { fg = "#A388CC" }
+active   = { fg = "#F5F5F5", bg = "#4E415C", bold = true }
+inactive = { fg = "#E2DCED" }
+
+[which]
+cols = 3
+mask            = { bg = "#1A1721" }
+cand            = { fg = "#C3B1E1" }
+rest            = { fg = "#4E415C" }
+desc            = { fg = "#E5989B" }
+separator       = "  "
+separator_style = { fg = "#4E415C" }

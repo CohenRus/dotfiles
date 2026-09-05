@@ -1,4 +1,4 @@
-theme = catppuccin-macchiato
+theme = purple
 font-size = 13
 font-family = Hack Nerd
 background-blur-radius = 20
@@ -24,6 +24,7 @@ keybind = global:ctrl+shift+g=new_window
 # general window controls
 keybind = ctrl+s>r=reload_config
 keybind = ctrl+s>x=close_surface
+keybind = ctrl+s>n=new_window
 
 # controlling splits or panes
 keybind = ctrl+s>/=new_split:right

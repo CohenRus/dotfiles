@@ -1,8 +1,13 @@
 # shell aliases
 alias hypredit="vim ~/Dotfiles/hyprland/.config/hypr/"
 
+alias tr="trash-put"
+
 # open tmux stuff session
 alias t="tmux new -A -s stuff"
+
+alias gpu-power="cat /sys/bus/pci/devices/0000:01:00.0/power_state"
+alias pbc="wl-copy"
 
 # deepseek
 alias ds="reasonix"

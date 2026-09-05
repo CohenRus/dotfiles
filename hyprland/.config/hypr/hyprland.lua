@@ -16,12 +16,34 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
+    output   = "eDP-1",
     mode     = "preferred",
-    position = "auto",
+    position = "auto-right",
     scale    = "auto",
 })
 
+hl.monitor({
+    output   = "HMDI-A-1",
+    mode     = "preferred",
+    position = "0x0",
+    scale    = "auto",
+})
+
+-- 2. Workspace Binding
+for i = 1, 6 do
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "HDMI-A-1" -- Must match the external output above
+    })
+end
+
+-- Bind workspaces 7-9 to the laptop screen
+for i = 7, 9 do
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "eDP-1" -- Must match the laptop output above
+    })
+end
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -48,6 +70,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("hypridle")
+	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("localsend_app --hidden")
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 	hl.exec_cmd("elephant")
@@ -65,7 +88,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-
+hl.env("AQ_DRM_DEVICES", "/dev/dri/card0")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -93,13 +116,13 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 15,
+        gaps_out = 10,
 
         border_size = 2,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border   = { colors = {"rgba(c3b1e1ee)", "rgba(a388ccee)"}, angle = 45 },
+            inactive_border = "rgba(4e415caa)",
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -137,6 +160,11 @@ hl.config({
     animations = {
         enabled = false,
     },
+})
+
+hl.window_rule({
+    match = { class = "zen" },
+    opacity = "1 override", 
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
@@ -249,10 +277,17 @@ hl.gesture({
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
+    name        = "elan06b0:00-04f3:3327-touchpad",
+    sensitivity = 0.25,
+    scroll_factor = 0.3,
 })
 
+hl.device({
+    name        = "razer-razer-deathadder-v2-pro-1",
+    sensitivity = -0.9,
+    scroll_factor = 1,
+    accel_profile = flat,
+})
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -268,7 +303,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("walker"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("nc -U /run/user/1000/walker/walker.sock"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
