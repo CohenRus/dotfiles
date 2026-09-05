@@ -115,9 +115,13 @@ hl.env("AQ_DRM_DEVICES", "/dev/dri/card0")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 10,
-
+        gaps_in = 5,
+        gaps_out = {
+		top = 5,
+		bottom = 10,
+		right = 10,
+		left = 10,
+	},
         border_size = 2,
 
         col = {
