@@ -15,8 +15,8 @@
     "network",
     "bluetooth",
     "pulseaudio",
+    "power-profiles-daemon",
     "battery",
-    "custom/power"
   ],
 
   "hyprland/workspaces": {
@@ -52,7 +52,7 @@
   },
 
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "tooltip-format": "Volume: {volume}%",
     "format-icons": ["", "", ""],
@@ -66,9 +66,23 @@
       "warning": 20,
       "critical": 10
     },
-    "format": "{icon}  {capacity}%",
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "tooltip-format": "{timeTo} ({capacity}%)"
+    "tooltip-format": "{capacity}% — {timeTo}",
+    "format-time": "{H}h {M}m"
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Profile: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
 
   "clock": {

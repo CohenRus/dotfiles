@@ -22,7 +22,7 @@ window#waybar {
     background-color: alpha(@bg, 0.90);
     border: 1px solid alpha(@accent, 0.30);
     border-radius: 0 0 14px 14px;
-    margin: 2px 5px 10px 5px;
+    margin: 5px 5px 10px 5px;
 }
 
 tooltip {
@@ -36,11 +36,22 @@ tooltip label {
     color: @text;
 }
 
+/* ---------- module group outer padding ---------- */
+
+#modules-left {
+    padding-left: 10px;
+}
+
+#modules-right {
+    padding-right: 10px;
+}
+
 /* ---------- shared module ---------- */
 
 #network,
 #bluetooth,
 #pulseaudio,
+#power-profiles-daemon,
 #battery {
     color: @muted;
     padding: 0 8px;

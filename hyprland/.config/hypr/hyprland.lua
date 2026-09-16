@@ -80,8 +80,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("localsend_app --hidden")
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-	hl.exec_cmd("wl-paste --type text --watch cliphlist store")
-	hl.exec_cmd("wl-paste --type image --watch cliphlist store")
+	hl.exec_cmd("wl-paste --type text --watch cliphist store")
+	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 end)
 
 -------------------------------
@@ -95,16 +95,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("AQ_DRM_DEVICES", "/dev/dri/card0")
-
-hl.config({
-    env = {
-        "QT_QPA_PLATFORMTHEME,qt5ct",
-        "QT_QPA_PLATFORM,wayland;xcb",
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1",
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-    },
-})
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -131,13 +123,13 @@ hl.config({
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in = 5,
+        gaps_in = 2.5,
         gaps_out = {
-		top = 5,
-		bottom = 10,
-		right = 10,
-		left = 10,
-	},
+            top = 5,
+            bottom = 5,
+            right = 5,
+            left = 5,
+        },
         border_size = 2,
 
         col = {
@@ -265,7 +257,6 @@ hl.config({
     },
 })
 
-
 ---------------
 ---- INPUT ----
 ---------------
@@ -273,7 +264,7 @@ hl.config({
 hl.config({
     input = {
         kb_layout  = "us",
-	kb_options = "ctrl:swapcaps",
+        kb_options = "ctrl:swapcaps",
         kb_variant = "",
         kb_model   = "",
         kb_rules   = "",
@@ -317,6 +308,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("wlogout"))
 
 -- Screenshot a selected region
@@ -420,4 +412,11 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+hl.window_rule({
+  match = {
+    class = "^(org.kde.dolphin)$"
+  },
+  opacity = "0.85 0.85" -- Sets active and inactive opacity
 })
