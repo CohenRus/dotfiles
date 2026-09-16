@@ -72,7 +72,8 @@ local menu        = "walker"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd("nm-applet --indicator")
+	hl.exec_cmd("nm-applet &")
+	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1 &")
 	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("mako")
@@ -289,8 +290,9 @@ hl.gesture({
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
     name        = "elan06b0:00-04f3:3327-touchpad",
-    sensitivity = 0.25,
+    sensitivity = 0.5,
     scroll_factor = 0.3,
+    accel_profile = flat,
 })
 
 hl.device({

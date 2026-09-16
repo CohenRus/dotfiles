@@ -1,14 +1,11 @@
-/* Minimal, clean — pastel purple */
+/* Minimal, clean — pywal palette */
 @import url("../../.cache/wal/colors-waybar.css");
 
 @define-color bg       @background;
-@define-color surface  @color1;
 @define-color text     @foreground;
-@define-color muted    @color7;
-@define-color subtle   @color8;
 @define-color accent   @color14;
-@define-color accent2  @color12;
-@define-color red      @color11;
+@define-color accent2  @color13;
+@define-color red      @color1;
 @define-color yellow   @color3;
 
 * {
@@ -19,64 +16,63 @@
 }
 
 window#waybar {
-    background-color: alpha(@bg, 0.90);
-    border: 1px solid alpha(@accent, 0.30);
-    border-radius: 0 0 14px 14px;
-    margin: 5px 5px 10px 5px;
+    background-color: alpha(@bg, 0.6);
+    border: 1px solid alpha(@accent, 0.6);
+    border-radius: 25px;
 }
 
 tooltip {
-    background-color: @surface;
+    background-color: alpha(@bg, 0.96);
     border: 1px solid alpha(@accent, 0.35);
-    border-radius: 8px;
-    padding: 6px 10px;
+    border-radius: 10px;
+    padding: 8px 12px;
 }
 
 tooltip label {
     color: @text;
 }
 
-/* ---------- module group outer padding ---------- */
+/* ---------- module group containers ---------- */
 
 #modules-left {
-    padding-left: 10px;
+    padding-left: 8px;
 }
 
 #modules-right {
-    padding-right: 10px;
-}
-
-/* ---------- shared module ---------- */
-
-#network,
-#bluetooth,
-#pulseaudio,
-#power-profiles-daemon,
-#battery {
-    color: @muted;
-    padding: 0 8px;
+    padding-right: 8px;
 }
 
 /* ---------- workspaces ---------- */
 
+#workspaces {
+    padding: 0 2px;
+}
+
 #workspaces button {
-    padding: 0 6px;
+    padding: 2px 8px;
     margin: 0 1px;
-    border-radius: 6px;
-    color: @muted;
-    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+    color: alpha(@text, 0.55);
+    transition: all 0.15s ease-in-out;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@text, 0.09);
+    color: @text;
 }
 
 #workspaces button.empty {
-    color: @subtle;
+    color: alpha(@text, 0.35);
 }
 
 #workspaces button.active {
+    background-color: alpha(@accent, 0.16);
     color: @accent;
     font-weight: bold;
 }
 
 #workspaces button.urgent {
+    background-color: alpha(@red, 0.22);
     color: @red;
 }
 
@@ -86,7 +82,8 @@ tooltip label {
     color: @accent;
     font-weight: bold;
     font-size: 14px;
-    padding: 0 10px;
+    letter-spacing: 0.5px;
+    padding: 0 12px;
 }
 
 /* ---------- spotify ---------- */
@@ -96,10 +93,31 @@ tooltip label {
     padding: 0 8px;
 }
 
-/* ---------- network ---------- */
+/* ---------- shared right-side modules ---------- */
 
-#network.disconnected {
-    color: @red;
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#battery {
+    color: alpha(@text, 0.78);
+    padding: 2px 9px;
+    margin: 0 1px;
+    border-radius: 9px;
+    transition: all 0.15s ease-in-out;
+}
+
+#bluetooth:hover,
+#pulseaudio:hover,
+#power-profiles-daemon:hover,
+#battery:hover {
+    background-color: alpha(@text, 0.09);
+    color: @text;
+}
+
+/* ---------- tray ---------- */
+
+#tray {
+    padding: 2px 8px;
 }
 
 /* ---------- bluetooth ---------- */
@@ -111,12 +129,13 @@ tooltip label {
 /* ---------- pulseaudio ---------- */
 
 #pulseaudio.muted {
-    color: @subtle;
+    color: alpha(@text, 0.40);
 }
 
 /* ---------- battery ---------- */
 
-#battery.charging {
+#battery.charging,
+#battery.plugged {
     color: @accent;
 }
 
@@ -131,10 +150,14 @@ tooltip label {
 /* ---------- power ---------- */
 
 #custom-power {
-    padding: 0 8px;
     color: @red;
+    padding: 2px 9px;
+    margin: 0 1px;
+    border-radius: 9px;
+    transition: all 0.15s ease-in-out;
 }
 
 #custom-power:hover {
+    background-color: alpha(@text, 0.09);
     color: @text;
 }

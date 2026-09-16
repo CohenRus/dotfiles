@@ -3,6 +3,7 @@
   "position": "top",
   "exclusive": true,
   "reload_style_on_change": true,
+  "margin": "5, 5, 0, 5",
 
   "modules-left": [
     "hyprland/workspaces"
@@ -12,7 +13,7 @@
     "custom/spotify"
   ],
   "modules-right": [
-    "network",
+    "tray",
     "bluetooth",
     "pulseaudio",
     "power-profiles-daemon",
@@ -28,16 +29,6 @@
     "on-scroll-up": "hyprctl dispatch workspace +1",
     "on-scroll-down": "hyprctl dispatch workspace -1",
     "show-special": false
-  },
-
-  "network": {
-    "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰖪",
-    "tooltip-format": "{ifname}: {ipaddr}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "on-click": "nm-connection-editor"
   },
 
   "bluetooth": {
@@ -72,6 +63,14 @@
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip-format": "{capacity}% — {timeTo}",
     "format-time": "{H}h {M}m"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6,
+    "icons": {
+      "nm-applet": "/home/cohen/.config/waybar/wifi.svg"
+    }
   },
 
   "power-profiles-daemon": {
