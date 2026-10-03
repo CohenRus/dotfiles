@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# Change wallpaper + regenerate pywal16 theming + lock-screen background.
+# usage: theme-script [--backend ENGINE] [--cols16 METHOD] [IMAGE]
+#   IMAGE defaults to the current wallpaper (re-theme in place).
+#   --backend selects the pywal16 color engine (run `wal --backend` to list).
+set -euo pipefail
+
+usage() {
+    cat <<'EOF'
+usage: theme-script [--backend ENGINE] [--cols16 METHOD] [IMAGE]
+
+Change wallpaper and regenerate the pywal16 theme.
+
+  IMAGE              wallpaper image; defaults to the current wallpaper (re-theme in place)
+  --backend ENGINE   pywal16 color engine
+  --cols16 METHOD    16-color output method (darken, lighten, dual, foxify-*)
+
+available backends:
+EOF
+    wal --backend
+}
+
+CURRENT="$HOME/Pictures/wallpapers/current"
+IMAGE=""
+WAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --backend|--cols16)
+            [[ $# -ge 2 ]] || { echo "option $1 needs a value" >&2; exit 1; }
+            WAL_ARGS+=("$1" "$2")
+            shift 2
+            ;;
+        -h|--help) usage; exit 0 ;;
+        -*) echo "unknown option: $1" >&2; exit 1 ;;
+        *)
+            [[ -z "$IMAGE" ]] || { echo "too many arguments: $1" >&2; exit 1; }
+            IMAGE="$1"
+            shift
+            ;;
+    esac
+done
+
+[[ -n "$IMAGE" ]] || IMAGE="$CURRENT"
+[[ -f "$IMAGE" ]] || { echo "not a file: $IMAGE" >&2; exit 1; }
+
+# 1. install the wallpaper; track whether it actually changed
+CHANGED=0
+if [[ "$(readlink -f "$IMAGE")" != "$(readlink -f "$CURRENT")" ]]; then
+    cp "$IMAGE" "$CURRENT"
+    CHANGED=1
+fi
+
+# 2. regenerate pywal16 colors (writes ~/.cache/wal/colors-* from ~/.config/wal/templates)
+wal -n -e "${WAL_ARGS[@]}" -i "$CURRENT"
+
+# 3. wallpaper-only steps: blurred lock background + hyprpaper re-apply
+if [[ $CHANGED -eq 1 ]]; then
+    "$HOME/.config/wal/generate-lock-bg.sh"
+    if command -v hyprctl >/dev/null 2>&1; then
+        # hyprpaper v0.8+ dropped `unload`/`preload` IPC; `wallpaper` alone reloads the file.
+        # Restart hyprpaper if its IPC socket died, otherwise every command silently fails.
+        if ! hyprctl hyprpaper listactive >/dev/null 2>&1; then
+            pkill -x hyprpaper 2>/dev/null || true
+            setsid hyprpaper >/dev/null 2>&1 < /dev/null &
+            sleep 1
+        fi
+        while IFS= read -r m; do
+            hyprctl hyprpaper wallpaper "$m,$CURRENT" || true
+        done < <(hyprctl monitors -j 2>/dev/null | jq -r '.[].name' 2>/dev/null)
+    fi
+fi
+
+# 4. reload apps whose theme is generated from the palette
+if command -v orbit >/dev/null 2>&1; then
+    orbit reload-theme || true
+fi
+# waybar re-reads its CSS (incl. the @import'd colors-waybar.css) on SIGUSR2
+pkill -SIGUSR2 -x waybar 2>/dev/null || true
+
+echo "done: wallpaper + pywal theme + lock background"

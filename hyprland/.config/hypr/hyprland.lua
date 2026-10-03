@@ -61,7 +61,6 @@ local terminal    = "ghostty"
 local fileManager = "dolphin"
 local menu        = "walker"
 
-
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -72,12 +71,11 @@ local menu        = "walker"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd("nm-applet &")
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1 &")
-	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("hypridle")
+    hl.exec_cmd("mega-cmd-server")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("localsend_app --hidden")
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
@@ -311,7 +309,8 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("wlogout"))
+-- 2x2 grid; margins tuned for 3072x1920 @2x (1536x960 logical) => 300px square tiles
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("wlogout -b 2 -T 150 -B 150 -L 438 -R 438"))
 
 -- Screenshot a selected region
 hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/screenshots"))
@@ -343,13 +342,13 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
-
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+-- Expand window (SUPER + =)
+hl.bind("SUPER + equal", hl.dsp.window.resize({ x = 20, y = 20, relative = true }), { repeating = true })
+-- Shrink window (SUPER + -)
+hl.bind("SUPER + minus", hl.dsp.window.resize({ x = -20, y = -20, relative = true }), { repeating = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
@@ -359,12 +358,16 @@ hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_S
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
 
--- Requires playerctl
+-- Spotify keys
+hl.bind("Print",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+hl.bind("XF86SelectiveScreenshot",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86LinkPhone",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86Favorites", hl.dsp.focus({ workspace = 11 }))
+
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
-
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

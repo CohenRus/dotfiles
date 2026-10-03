@@ -1,0 +1,25 @@
+# Orbit configuration
+# Apply changes without restarting the daemon: orbit reload-config
+
+# Window anchor on screen.
+# top-left | top-center | top-right | center-left | center | center-right
+# | bottom-left | bottom-center | bottom-right
+position = "top-right"
+
+# Margins (pixels) from the screen edges.
+margin_top = 10
+margin_right = 10
+margin_bottom = 10
+margin_left = 10
+
+# Window show/hide animation.
+# slidedown | slideup | slideleft | slideright | swingdown | swingup
+# | swingleft | swingright | fade | crossfade | none
+window_transition = "slidedown"
+window_transition_duration = 200
+
+# Tab-switch animation.
+# slidehorizontal | slidevertical | slidedown | slideup | slideleft
+# | slideright | crossfade | none
+stack_transition = "slidehorizontal"
+stack_transition_duration = 200

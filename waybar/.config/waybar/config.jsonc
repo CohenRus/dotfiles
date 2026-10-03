@@ -13,8 +13,8 @@
     "custom/spotify"
   ],
   "modules-right": [
-    "tray",
-    "bluetooth",
+    "idle_inhibitor",
+    "custom/orbit",
     "pulseaudio",
     "power-profiles-daemon",
     "battery",
@@ -31,15 +31,25 @@
     "show-special": false
   },
 
-  "bluetooth": {
-    "format": "󰂯",
-    "format-on": "󰂯",
-    "format-connected": "󰂱",
-    "format-off": "",
-    "format-disabled": "",
-    "format-no-controller": "",
-    "tooltip-format": "Bluetooth: {status}",
-    "on-click": "blueman-manager"
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰒲"
+    },
+    "tooltip": true,
+    "tooltip-format-activated": "Idle inhibitor: active",
+    "tooltip-format-deactivated": "Idle inhibitor: inactive"
+  },
+
+  "custom/orbit": {
+    "exec": "orbit waybar-status",
+    "return-type": "json",
+    "interval": 10,
+    "format": "󱗿",
+    "tooltip": true,
+    "on-click": "orbit toggle top-right",
+    "on-click-right": "orbit toggle top-right --tab bluetooth"
   },
 
   "pulseaudio": {
@@ -63,14 +73,6 @@
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip-format": "{capacity}% — {timeTo}",
     "format-time": "{H}h {M}m"
-  },
-
-  "tray": {
-    "icon-size": 16,
-    "spacing": 6,
-    "icons": {
-      "nm-applet": "/home/cohen/.config/waybar/wifi.svg"
-    }
   },
 
   "power-profiles-daemon": {
@@ -108,15 +110,13 @@
   "custom/power": {
     "format": " ",
     "tooltip": false,
-    "on-click": "wlogout"
+    // 2x2 grid; margins tuned for 3072x1920 @2x (1536x960 logical) => 300px square tiles
+    "on-click": "wlogout -b 2 -T 150 -B 150 -L 438 -R 438"
   },
 
   "custom/spotify": {
-    "exec": "/usr/bin/python3 /home/cohen/Work/scripts/waybar-spotify.py --player spotify",
+    "exec": "/home/cohen/Dotfiles/waybar/.config/waybar/player-script.sh",
     "format": "{}",
-    "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
+    "tooltip": false
   }
 }

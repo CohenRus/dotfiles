@@ -13,7 +13,7 @@ alias t="tmux new -A -s stuff"
 
 alias gpu-power="cat /sys/bus/pci/devices/0000:01:00.0/power_state"
 alias pbc="wl-copy"
-alias theme="wal -i /home/cohen/Pictures/wallpapers/current"
+alias theme="~/.config/wal/theme-script"
 
 # deepseek
 alias ds="reasonix"

@@ -94,7 +94,8 @@ tooltip label {
 
 /* ---------- shared right-side modules ---------- */
 
-#bluetooth,
+#idle_inhibitor,
+#custom-orbit,
 #pulseaudio,
 #power-profiles-daemon,
 #battery {
@@ -105,7 +106,8 @@ tooltip label {
     transition: all 0.15s ease-in-out;
 }
 
-#bluetooth:hover,
+#idle_inhibitor:hover,
+#custom-orbit:hover,
 #pulseaudio:hover,
 #power-profiles-daemon:hover,
 #battery:hover {
@@ -113,15 +115,7 @@ tooltip label {
     color: @text;
 }
 
-/* ---------- tray ---------- */
-
-#tray {
-    padding: 2px 8px;
-}
-
-/* ---------- bluetooth ---------- */
-
-#bluetooth.connected {
+#idle_inhibitor.activated {
     color: @accent;
 }
 
