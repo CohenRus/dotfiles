@@ -96,8 +96,9 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+hl.env("QT_ENABLE_HIGHDPI_SCALING", "1")
 
------------------------
 ----- PERMISSIONS -----
 -----------------------
 
@@ -121,6 +122,9 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
+    xwayland = {
+        force_zero_scaling = true
+    },
     general = {
         gaps_in = 2.5,
         gaps_out = {
@@ -137,7 +141,7 @@ hl.config({
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
+        resize_on_border = true,
 
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,

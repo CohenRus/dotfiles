@@ -2,8 +2,9 @@
 source ~/.zaliases
 
 # enable completition system
-autoload -U compinit $$ compinit
+autoload -Uz compinit $$ compinit
 
+source /usr/share/nvm/nvm.sh
 
 # use vim motions and ensure colors work
 bindkey -v
