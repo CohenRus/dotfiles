@@ -2,6 +2,7 @@
 export BAT_THEME=OneHalfDark
 
 export PATH="$PATH:/home/cohen/.local/bin"
+export PATH="$PATH:/home/cohen/Work/Scripts/bin"
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

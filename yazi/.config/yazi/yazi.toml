@@ -28,26 +28,48 @@ prepend_previewers = [
 cursor_blink = false
 
 [opener]
-vscode = [
-	{ run = "code $@", orphan = true } 
+edit = [
+  { run = 'nvim "$@"', block = true, for = "unix" },
+]
+open = [
+  { run = 'xdg-open "$1"', orphan = true, desc = "Open with default system app" },
+]
+zed = [
+  { run = 'zed "$1"', orphan = true, desc = "Open in Zed" },
+]
+reveal = [
+  { run = 'dolphin --select "$1"', orphan = true, desc = "Reveal in Dolphin" },
+]
+play = [
+  { run = 'mpv "$@"', orphan = true, desc = "Play media" },
+]
+extract = [
+  # Uses your installed KDE Ark to extract here (or use 'unar' if you install it)
+  { run = 'ark -b "$1"', orphan = true, desc = "Extract with Ark" },
+]
+office = [
+  { run = 'libreoffice "$@"', orphan = true, desc = "Open in LibreOffice" },
+]
+lsar = [
+  { run = 'lsar "$1"', block = true, desc = "List archive contents", for = "unix" },
 ]
 
 [open]
 rules = [
-	# Text
-	{ mime = "text/*", use = [ "edit", "vscode", "reveal" ] },
-	# Image
-	{ mime = "image/*", use = [ "open", "vscode", "reveal" ] },
-	# Media
-	{ mime = "{audio,video}/*", use = [ "play", "vscode", "reveal" ] },
-	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "vscode", "reveal" ] },
-	# JSON
-	{ mime = "application/{json,ndjson}", use = [ "edit", "vscode", "reveal" ] },
-
-	{ mime = "*/javascript", use = [ "edit", "vscode", "reveal" ] },
-	# Empty file
-	{ mime = "inode/empty", use = [ "edit", "vscode", "reveal" ] },
-	# Fallback
-	{ mime = "*", use = [ "open", "vscode", "reveal" ] },
+    # Text
+    { mime = "text/*", use = [ "edit", "zed", "reveal" ] },
+    # Image
+    { mime = "image/*", use = [ "open", "zed", "reveal" ] },
+    # Media
+    { mime = "{audio,video}/*", use = [ "play", "zed", "reveal" ] },
+    # Archive
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "zed", "reveal" ] },
+    # JSON
+    { mime = "application/{json,ndjson}", use = [ "edit", "zed", "reveal" ] },
+    # JavaScript
+    { mime = "*/javascript", use = [ "edit", "zed", "reveal" ] },
+    # Empty file
+    { mime = "inode/empty", use = [ "edit", "zed", "reveal" ] },
+    # Fallback
+    { mime = "*", use = [ "open", "zed", "reveal" ] },
 ]
