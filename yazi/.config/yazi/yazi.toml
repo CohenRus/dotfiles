@@ -24,38 +24,47 @@ prepend_previewers = [
   { url = "*.rar",  run = "lsar" },
   { url = "*.tar.gz", run = "lsar" },
 ]
+
 [input]
 cursor_blink = false
 
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true, for = "unix" },
+  { run = 'nvim %s', block = true, for = "unix" },
 ]
 open = [
-  { run = 'xdg-open "$1"', orphan = true, desc = "Open with default system app" },
+  { run = 'xdg-open %s1', orphan = true, desc = "Open with default system app" },
 ]
 zed = [
-  { run = 'zed "$1"', orphan = true, desc = "Open in Zed" },
+  { run = 'zed %s1', orphan = true, desc = "Open in Zed" },
 ]
 reveal = [
-  { run = 'dolphin --select "$1"', orphan = true, desc = "Reveal in Dolphin" },
+  { run = 'dolphin --select %s1', orphan = true, desc = "Reveal in Dolphin" },
 ]
 play = [
-  { run = 'mpv "$@"', orphan = true, desc = "Play media" },
+  { run = 'mpv %s', orphan = true, desc = "Play media" },
 ]
 extract = [
   # Uses your installed KDE Ark to extract here (or use 'unar' if you install it)
-  { run = 'ark -b "$1"', orphan = true, desc = "Extract with Ark" },
+  { run = 'ark -b %s1', orphan = true, desc = "Extract with Ark" },
 ]
 office = [
-  { run = 'libreoffice "$@"', orphan = true, desc = "Open in LibreOffice" },
+  { run = 'libreoffice %s', orphan = true, desc = "Open in LibreOffice" },
 ]
 lsar = [
-  { run = 'lsar "$1"', block = true, desc = "List archive contents", for = "unix" },
+  { run = 'lsar %s1', block = true, desc = "List archive contents", for = "unix" },
+]
+# Added PDF opener (change 'okular' if you use a different reader)
+pdf = [
+  { run = 'okular %s1', orphan = true, desc = "Open in Okular" },
 ]
 
 [open]
 rules = [
+    # PDF (MIME and extension fallback)
+    { mime = "application/pdf", use = [ "pdf", "open", "reveal" ] },
+    { url = "*.pdf", use = [ "pdf", "open", "reveal" ] },
+
     # Text
     { mime = "text/*", use = [ "edit", "zed", "reveal" ] },
     # Image

@@ -292,7 +292,7 @@ hl.gesture({
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
     name        = "elan06b0:00-04f3:3327-touchpad",
-    sensitivity = 0.5,
+    sensitivity = 0.45,
     scroll_factor = 0.3,
     accel_profile = flat,
 })

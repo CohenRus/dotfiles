@@ -4,6 +4,8 @@ alias hypredit="nvim ~/Dotfiles/hyprland/.config/hypr/"
 alias hybrid="sudo envycontrol -s hybrid"
 alias integrated="sudo envycontrol -s integrated"
 
+alias pio-run="pio run -t upload && pio device monitor"
+
 alias power="awk '{print \$1*1e-6 \" W\"}' /sys/class/power_supply/BAT*/power_now"
 alias time="sudo timedatectl set-ntp true"
 alias tr="trash-put"
