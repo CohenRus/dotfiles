@@ -299,7 +299,7 @@ hl.device({
 
 hl.device({
     name        = "razer-razer-deathadder-v2-pro-1",
-    sensitivity = -0.8,
+    sensitivity = -0.5,
     scroll_factor = 1,
     accel_profile = flat,
 })
@@ -321,13 +321,14 @@ hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictu
 
 -- launcher
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("tofi-drun --drun-launch=true"))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist list | tofi --prompt-text='clipboard: ' | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist list | tofi --prompt-text='' | cliphist decode | wl-copy"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.config/tofi/file-search.sh"))
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("/opt/google/chrome/google-chrome --profile-directory=Default --app-id=okhfeehhillipaleckndoboggdkcebmo"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
@@ -428,4 +429,13 @@ hl.window_rule({
     class = "^(org.kde.dolphin)$"
   },
   opacity = "0.85 0.85" -- Sets active and inactive opacity
+})
+
+hl.window_rule({
+    match = {
+        class = "chrome-okhfeehhillipaleckndoboggdkcebmo-Default"
+    },
+    float = true,
+    center = true,
+    size = {1000, 600},
 })
